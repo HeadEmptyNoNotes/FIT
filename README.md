@@ -35,7 +35,7 @@ A: Decompose your tasks into FIT tickets, and let your main board be big-picture
 Q: My org wont' sign off on a different issue tracker, how do I use FIT? <br />
 A: put fit/ into .gitignore, or put your board into another directory outside the repo. 
 
-Q: This is nice, but I'd like to do something differently. Can I change the spec?
+Q: This is nice, but I'd like to do something differently. Can I change the spec? <br />
 A: Do it. 
 
 Q: Why isn't there any code? Wouldn't it be good to have a program that managed this? <br />
