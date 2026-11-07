@@ -17,6 +17,13 @@ At a repo’s root, lives a directory called “fit”. In that directory there 
 
 A more "complete" spec is [here](FULL_SPEC.md).
 
+## CLI
+
+This repository contains a CLI tool.
+The CLI is not required to use FIT. The CLI tool is a helper that may make FIT more convienent.
+
+The CLI may be installed by running `pipx install git+https://github.com/HeadEmptyNoNotes/FIT#subdirectory=cli`. 
+
 ## Why?
 Keeping tickets as simple markdown files, moved between directories representing ticket status, keeps a human's focus on the repository. <br />
 The tools that the developer uses to handle their code are also the tools that they use to manage tickets, reducing mental overhead and making it more likely that they'll properly maintain their board while working.  <br />

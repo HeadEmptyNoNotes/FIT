@@ -30,3 +30,7 @@ A ticket is created in "open" or "backlog". It is moved to "in_progress" while i
 To archive closed tickets, either zip the "closed" directory or compile all of the tickets into a single markdown file. 
 
 A ticket is not required to correspond to one git commit. A ticket that has just been closed should not contain the git commit hash of the commit that closed it.
+
+## Git
+
+A fit/ directory may be included in .gitignore. In this case, it is recommend that the time of completion is recorded, though it is not mandatory.
