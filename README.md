@@ -24,6 +24,8 @@ The CLI is not required to use FIT. The CLI tool is a helper that may make FIT m
 
 The CLI may be installed by running `pipx install git+https://github.com/HeadEmptyNoNotes/FIT#subdirectory=cli`. 
 
+The CLI's help may be accessed via --help.
+
 ## Why?
 Keeping tickets as simple markdown files, moved between directories representing ticket status, keeps a human's focus on the repository. <br />
 The tools that the developer uses to handle their code are also the tools that they use to manage tickets, reducing mental overhead and making it more likely that they'll properly maintain their board while working.  <br />
