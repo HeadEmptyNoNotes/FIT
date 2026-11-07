@@ -1,5 +1,6 @@
 # FIT
 
+<p align="center">
 File Is Task - 
 FIT Isn't Trello - 
 Fits In Tight - 
@@ -7,6 +8,7 @@ Fixes Incessant Tedium -
 Foregoes Inane Tradition - 
 F\*\*\*, It's Tiny - 
 Fishing Iberian Trout
+</p>
 
 ---
 
