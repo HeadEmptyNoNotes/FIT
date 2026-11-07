@@ -9,19 +9,19 @@ A fit board is a directory ("fit" by convention, but it could be named anything)
 - in_progress
 - backlog
 
-These directories main contain subdirectories. These subdirectories may be additional, more granular statuses, or directories specific to a particular overall ticket. If both are desired, directories specific to a project should be inside directories denoting status.
+These directories may contain subdirectories. These subdirectories may be additional, more granular statuses, or directories specific to a particular overall ticket. If both are desired, directories specific to a project should be inside directories denoting status.
 
 ## Tickets
 
-A ticket is a markdown file within one of the aforementioned folders, either at their root or within another subfolder.
+A ticket is a markdown file within one of the aforementioned folders.
 
 Ticket order is determined by sorting the tickets by filename ascending.
 
-A ticket may be named anything, though by convention is named with a two-digit number representing ticket priority (ie multiple tickets may use the same number), followed by a name that is meaningful when viewed from a file tree, with words separated via underscore.
+A ticket may be named anything. By convention, the name format is a two-digit number representing ticket priority (ie multiple tickets may use the same number), followed by an all-lowercase name that is meaningful when viewed from a file tree, with words separated via hyphen-minus. eg: 03-fix-typo-in-readme.md
 
-A ticket may contain a frontmatter YAML header with arbitrary relevant information. It should *not* contain extraneous or frivolous information that is not immediately relevant to a reader.
+A ticket may contain a frontmatter YAML header with arbitrary relevant information. It should *not* contain extraneous or frivolous information that is not immediately relevant to a reader. A ticket without frontmatter is a valid ticket.
 
-The body of a ticket should be short, ideally no more then 5 lines long given 80-character lines.
+The body of a ticket should be short, ideally no more then ~250 characters (3 lines long at 80 characters a line).
 
 ## Lifecycle
 
@@ -29,4 +29,4 @@ A ticket is created in "open" or "backlog". It is moved to "in_progress" while i
 
 To archive closed tickets, either zip the "closed" directory or compile all of the tickets into a single markdown file. 
 
-A ticket is not required to correspond to one git commit. 
+A ticket is not required to correspond to one git commit. A ticket that has just been closed should not contain the git commit hash of the commit that closed it.
