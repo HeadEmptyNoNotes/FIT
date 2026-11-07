@@ -11,6 +11,10 @@ A fit board is a directory ("fit" by convention, but it could be named anything)
 
 These directories may contain subdirectories. These subdirectories may be additional, more granular statuses, or directories specific to a particular overall ticket. If both are desired, directories specific to a project should be inside directories denoting status.
 
+By convention, the "fit" directory lives at the root of a repository using FIT.
+
+This specification document may live at the root of the board directory.
+
 ## Tickets
 
 A ticket is a markdown file within one of the aforementioned folders.
