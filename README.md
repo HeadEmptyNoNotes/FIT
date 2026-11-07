@@ -12,30 +12,38 @@ Fishing Iberian Trout
 
 FIT is a developer-first ticket-tracking and issue-recording system. The basic edition comes pre-installed on every computer system available today, and is usable out of the box without any downloads or special procedures.
 
-## Specification
+## Short Specification
 At a repo’s root, lives a directory called “fit”. In that directory there are dirs “open”, “closed”, “in-progress”, and “backlog”. Tickets are markdown files. Priority is filenames sorted ascending. If metadata is needed, use frontmatter yaml. That’s it.
+
+A more "complete" spec is [here](FULL_SPEC.md).
 
 ## Why?
 Keeping tickets as simple markdown files, moved between directories representing ticket status, keeps a human's focus on the repository. <br />
-The tools that the developer uses to handle their code are also the tools that they use to manage tickets, reducing mental overhead and making it more likely that they'll properly maintain them.  <br />
-Issues transcend the host's platform and are replicated perfectly wherever the project is hosted or mirrored. <br />
+The tools that the developer uses to handle their code are also the tools that they use to manage tickets, reducing mental overhead and making it more likely that they'll properly maintain their board while working.  <br />
+Issues aren't captive inside a host's ticketing system or a specific vendor's board. <br />
 
 ## NAQ
 
 Nobody Asked these Questions but it seems like a good idea to answer them
 
+Q: Is this a shitpost? <br />
+A: Nope, this is something that this author began doing after experiencing intense frustration after yeras of using "maintream" ticketing solutions to manage tasks. A name and a spec makes it a usable business process.
+
 Q: I use Trello/Github Issues/Whatever, why would I use this? <br />
 A: Decompose your tasks into FIT tickets, and let your main board be big-picture.
 
 Q: My org wont' sign off on a different issue tracker, how do I use FIT? <br />
-A: put fit/ into .gitignore, or put your board into another folder
+A: put fit/ into .gitignore, or put your board into another directory outside the repo. 
 
-Q: Is this a shitpost? <br />
-A: Nope, this was born out of intense frustration
+Q: This is nice, but I'd like to do something differently. Can I change the spec?
+A: Do it. 
+
+Q: Why isn't there any code? Wouldn't it be good to have a program that managed this? <br />
+A: One might be coming. 
 
 Q: This doesn't fit my usecase <br />
 A: 👍
 
 ## Agents
 
-FIT was designed for people to benefit people, but feel free to point your agent at this file. 
+FIT was designed for the benefit of people, but feel free to feed [the full specification](FULL_SPEC.md) into your agent. At the very least, that should help your agent plan in a way that you can actually read.
