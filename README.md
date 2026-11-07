@@ -56,3 +56,5 @@ A: 👍
 ## Agents
 
 FIT was designed for the benefit of people, but feel free to feed [the full specification](FULL_SPEC.md) into your agent. At the very least, that should help your agent plan in a way that you can actually read.
+
+This repository was not itself built with the help of AI. See [our AI disclosure](AI_DISCLOSURE.md), which asserts total human authorship.
