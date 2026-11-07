@@ -3,7 +3,6 @@
 <p align="center">
 File Is Task - 
 FIT Isn't Trello - 
-Fits In Tight - 
 Fixes Incessant Tedium - 
 Foregoes Inane Tradition - 
 F\*\*\*, It's Tiny - 
@@ -35,7 +34,7 @@ Issues aren't captive inside a host's ticketing system or a specific vendor's bo
 
 ## NAQ
 
-Nobody Asked these Questions but it seems like a good idea to answer them
+<ins>**N**</ins>obody <ins>**A**</ins>sked these <ins>**Q**</ins>uestions but it seems like a good idea to answer them
 
 Q: Is this a shitpost? <br />
 A: Nope, this is something that this author began doing after experiencing intense frustration after years of using "maintream" ticketing solutions to manage tasks. A name and a spec makes it a usable business process.
@@ -46,8 +45,8 @@ A: Decompose your tasks into FIT tickets, and let your main board be big-picture
 Q: My org won't sign off on a different issue tracker, how do I use FIT? <br />
 A: put fit/ or /fit into .gitignore, or put your board into another directory outside the repo. 
 
-Q: This is nice, but I'd like to do something differently. Can I change the spec? <br />
-A: Do it. 
+Q: This is nice, but I'd like to do something differently. Can I do something differently? <br />
+A: Yeah man, do it. 
 
 Q: The CLI tool is nice, but I'd like one in \<language\> <br />
 A: I look forward to seeing what you create. This project's license is very liberal.
