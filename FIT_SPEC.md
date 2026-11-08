@@ -140,7 +140,8 @@ ticket file. The format of the document is thus:
 ````
 
 An archived ticket ceases to be an actionable ticket, and exists for backup and history purposes. An archived ticket may be 
-reconstructed
+reconstructed from the text between the triple-backticks in archive.txt, and placed in the location indicated by the archive
+(the ticket is then removed from archive.txt). 
 
 Archived tickets may be moved from the board to a backup location. Archived tickets so removed from the board are no longer
 actionable tickets while they are , and an archive file may be moved back into the 'closed'
