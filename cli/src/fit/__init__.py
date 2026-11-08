@@ -1,3 +1,6 @@
+import subprocess
+import platform
+from datetime import date
 import typer
 from pathlib import Path
 from typing import Annotated
@@ -17,6 +20,10 @@ DEFAULT_FUZZ_THRESHOLD = 80.0
 
 SORT_ORDER = ["in_progress", "open", "backlog", "closed"]
 FORMATTED_SORT_ORDER = ["[bold green]In Progress[/bold green]", "[bold blue]Open[/bold blue]", "[bold purple]Backlog[/bold purple]", "[bold grey]Closed[/bold grey]"]
+
+IN_VSCODE = os.environ.get("TERM_PROGRAM") == "vscode"
+IN_NVIM = os.environ.get("TERM_PROGRAM") == "NVIM"
+
 
 app = typer.Typer()
 
@@ -132,8 +139,8 @@ def pprint_ticket(ticketfile: Path, simple: bool = False, expand: bool = False):
         title = str(ticketfile.stem.replace("-", " ").title())
         console.print(Panel(group, title=title, subtitle=str(ticketfile), width=84 if not expand else None))
 
-@app.command()
-def show(name: str, nopartial: bool = False, simple: bool = False, expand: bool = False):
+@app.command(name="print")
+def print_ticket_command(name: str, nopartial: bool = False, simple: bool = False, expand: bool = False):
     """Prints the targeted ticket. By default prints all pretty with rendered markdown and a border,
     but with --simple just prints the path of the file and its plain text"""
     ticketfile = find_ticket_file_by_name(name, nopartial) 
@@ -141,8 +148,8 @@ def show(name: str, nopartial: bool = False, simple: bool = False, expand: bool 
         pprint_ticket(ticketfile, simple, expand)
 
 @app.command()
-def show_current(nopartial: bool = False, simple: bool = False, expand: bool = False):
-    """Same as 'show', but prints the current 'in_progress' ticket if 'in_progress' has 
+def print_current(nopartial: bool = False, simple: bool = False, expand: bool = False):
+    """Same as 'print', but prints the current 'in_progress' ticket if 'in_progress' has 
     exactly on ticket."""
     in_progress = get_all_tickets_by_status()["in_progress"]
     if len(in_progress) == 1:
@@ -184,8 +191,8 @@ def pull():
         print(f"Current 'in_progress' ticket is {tickets["in_progress"][0]}")
 
 @app.command()
-def close(name: str = "", nopartial: bool = False):
-    """If no name is provided and there is a ticket in 'in_progress', closes it. Otherwise closes the targeted ticket."""
+def close(name: str = "", nopartial: bool = False, nodate: bool = False):
+    """If no name is provided and there is a ticket in 'in_progress', closes it. Otherwise closes the targeted ticket. Records the current date as the closing date unless --nodate is used"""
     ticket: Path | None = None
     if name != "":
         ticket = find_ticket_file_by_name(name, nopartial)
@@ -198,11 +205,51 @@ def close(name: str = "", nopartial: bool = False):
         else:
             print("'in_progress' did not have exactly 1 ticket")
     if ticket:
-        ticket.move(Path(DEFAULT_FIT_DIR) / "closed" / ticket.name)
+        if not nodate:
+            post = frontmatter.load(ticket)
+            post.metadata["date-closed"] = date.today()
+            (Path(DEFAULT_FIT_DIR) / "closed" / ticket.name).write_text(frontmatter.dumps(post))
+        else:
+            ticket.move(Path(DEFAULT_FIT_DIR) / "closed" / ticket.name)
         print(f"Closed {ticket}")
     else:
         print("No tickets were closed")
         return False
+
+@app.command()
+def edit(name, nopartial: bool = False):
+    """Open ticket in system default editor"""
+    ticket = find_ticket_file_by_name(name, nopartial)
+    if not ticket:
+        return
+
+    full_ticket_path = ticket.resolve().as_posix()
+    print(full_ticket_path)
+
+    current_os = platform.system()
+    if current_os == "Windows":
+        os.startfile(str(full_ticket_path))
+    elif current_os == "Darwin":
+        subprocess.call(("open", str(full_ticket_path)))
+    else:
+        try:
+            subprocess.call(("xdg-open", str(full_ticket_path)))
+        except:
+            pass
+        try:
+            subprocess.call(("code", str(full_ticket_path)))
+        except:
+            pass
+
+@app.command()
+def resolve(name, nopartial: bool = False):
+    """Looks up a ticket given the provided name, and returns the path. --nopartial turns fuzzy finding off"""
+    ticket = find_ticket_file_by_name(name, nopartial)
+    if ticket:
+        print(ticket.resolve())
+    else:
+        print("")
+
 
 def main() -> None:
     app()
